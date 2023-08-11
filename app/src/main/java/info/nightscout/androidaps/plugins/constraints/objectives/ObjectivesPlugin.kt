@@ -16,6 +16,7 @@ import info.nightscout.androidaps.utils.DateUtil
 import info.nightscout.androidaps.utils.alertDialogs.OKDialog
 import info.nightscout.androidaps.interfaces.ResourceHelper
 import info.nightscout.shared.sharedPreferences.SP
+import java.time.Instant
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -79,6 +80,24 @@ class ObjectivesPlugin @Inject constructor(
         objectives.add(Objective9(injector))
         objectives.add(Objective10(injector))
         // edit companion object if you remove/add Objective
+    }
+
+    fun all_completed()
+    {
+        for (objective in objectives) {
+            objective.startedOn = Instant.now().toEpochMilli()
+            objective.accomplishedOn = Instant.now().toEpochMilli()
+        }
+        sp.putBoolean(R.string.key_ObjectivesbgIsAvailableInNS, true)
+        sp.putBoolean(R.string.key_ObjectivespumpStatusIsAvailableInNS, true)
+        sp.putInt(R.string.key_ObjectivesmanualEnacts, 1)
+        sp.putBoolean(R.string.key_objectiveuseprofileswitch, true)
+        sp.putBoolean(R.string.key_objectiveusedisconnect, true)
+        sp.putBoolean(R.string.key_objectiveusereconnect, true)
+        sp.putBoolean(R.string.key_objectiveusetemptarget, true)
+        sp.putBoolean(R.string.key_objectiveuseactions, true)
+        sp.putBoolean(R.string.key_objectiveuseloop, true)
+        sp.putBoolean(R.string.key_objectiveusescale, true)
     }
 
     fun reset() {
