@@ -32,6 +32,7 @@ import info.nightscout.androidaps.utils.alertDialogs.OKDialog
 import info.nightscout.androidaps.utils.protection.ProtectionCheck
 import info.nightscout.androidaps.utils.protection.ProtectionCheck.Protection.PREFERENCES
 import info.nightscout.androidaps.interfaces.ResourceHelper
+import info.nightscout.androidaps.plugins.constraints.objectives.ObjectivesPlugin
 import info.nightscout.androidaps.utils.rx.AapsSchedulers
 import io.reactivex.rxjava3.core.Completable.fromAction
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -58,6 +59,7 @@ class MaintenanceFragment : DaggerFragment() {
     @Inject lateinit var pumpSync: PumpSync
     @Inject lateinit var iobCobCalculator: IobCobCalculator
     @Inject lateinit var overviewData: OverviewData
+    @Inject lateinit var objectivesPlugin: ObjectivesPlugin
 
     private val compositeDisposable = CompositeDisposable()
     private var inMenu = false
@@ -83,6 +85,10 @@ class MaintenanceFragment : DaggerFragment() {
             Thread {
                 maintenancePlugin.deleteLogs(5)
             }.start()
+        }
+        binding.skipObjectives.setOnClickListener {
+            uel.log(Action.OBJECTIVES_SKIPPED, Sources.Maintenance)
+            objectivesPlugin.all_completed()
         }
         binding.navResetdb.setOnClickListener {
             activity?.let { activity ->

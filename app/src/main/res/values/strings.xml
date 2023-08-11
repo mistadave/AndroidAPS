@@ -833,6 +833,7 @@
     <string name="description_maintenance">Provides several functions for maintenance (eg. log sending, log deletion).</string>
     <string name="send_all_logs">Send Logs by Email</string>
     <string name="delete_logs">Delete Logs</string>
+    <string name="skip_objectives">Skip Objectives</string>
     <string name="error_adding_treatment_message">A treatment (insulin: %1$.2f, carbs: %2$d, at: %3$s) could not be added to treatments. Please check and manually add a record as appropriate.</string>
     <string name="generated_ecarbs_note">eCarbs: %1$d g (%2$d h), delay: %3$d m</string>
     <string name="openaps_noasdata">No autosens data available</string>
