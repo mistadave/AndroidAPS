@@ -87,7 +87,7 @@ class MaintenanceFragment : DaggerFragment() {
             }.start()
         }
         binding.skipObjectives.setOnClickListener {
-            uel.log(Action.OBJECTIVES_SKIPPED, Sources.Maintenance)
+            //uel.log(Action.OBJECTIVES_SKIPPED, Sources.Maintenance)
             objectivesPlugin.all_completed()
         }
         binding.navResetdb.setOnClickListener {
