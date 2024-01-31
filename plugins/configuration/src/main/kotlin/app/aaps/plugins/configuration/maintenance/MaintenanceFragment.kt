@@ -34,13 +34,13 @@ import app.aaps.database.entities.UserEntry.Sources
 import app.aaps.plugins.configuration.R
 import app.aaps.plugins.configuration.databinding.MaintenanceFragmentBinding
 import app.aaps.plugins.configuration.maintenance.activities.LogSettingActivity
-import info.nightscout.androidaps.plugins.constraints.objectives.ObjectivesPlugin
 import dagger.android.support.DaggerFragment
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
 import io.reactivex.rxjava3.kotlin.plusAssign
 import io.reactivex.rxjava3.kotlin.subscribeBy
 import javax.inject.Inject
+import app.aaps.plugins.constraints.objectives.ObjectivesPlugin
 
 class MaintenanceFragment : DaggerFragment() {
 

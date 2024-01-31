@@ -99,7 +99,7 @@
                         app:layout_gravity="fill"
                         app:layout_row="1" />
 
-                    <info.nightscout.androidaps.utils.ui.SingleClickButton
+                    <app.aaps.core.ui.elements.SingleClickButton
                         android:id="@+id/skip_objectives"
                         style="@style/GrayButton"
                         android:layout_width="0dp"
@@ -107,7 +107,7 @@
                         android:drawableTop="@drawable/ic_poop_outline"
                         android:paddingStart="0dp"
                         android:paddingEnd="0dp"
-                        android:text="@string/skip_objectives"
+                        android:text="Skip Objectives"
                         android:textSize="11sp"
                         app:layout_column="1"
                         app:layout_columnWeight="1"
