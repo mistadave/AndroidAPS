@@ -34,6 +34,7 @@ import app.aaps.plugins.constraints.objectives.objectives.Objective9
 import dagger.android.HasAndroidInjector
 import javax.inject.Inject
 import javax.inject.Singleton
+import java.time.Instant
 
 @Singleton
 class ObjectivesPlugin @Inject constructor(
@@ -78,6 +79,24 @@ class ObjectivesPlugin @Inject constructor(
         objectives.add(Objective10(injector))
         objectives.add(Objective11(injector))
         // edit companion object if you remove/add Objective
+    }
+
+    fun all_completed()
+    {
+        for (objective in objectives) {
+            objective.startedOn = Instant.now().toEpochMilli()
+            objective.accomplishedOn = Instant.now().toEpochMilli()
+        }
+        sp.putBoolean(app.aaps.core.utils.R.string.key_objectives_bg_is_available_in_ns, true)
+        sp.putBoolean(app.aaps.core.utils.R.string.key_objectives_pump_status_is_available_in_ns, true)
+        sp.putInt(app.aaps.core.utils.R.string.key_ObjectivesmanualEnacts, 1)
+        sp.putBoolean(app.aaps.core.utils.R.string.key_objectiveuseprofileswitch, true)
+        sp.putBoolean(app.aaps.core.utils.R.string.key_objectiveusedisconnect, true)
+        sp.putBoolean(app.aaps.core.utils.R.string.key_objectiveusereconnect, true)
+        sp.putBoolean(app.aaps.core.utils.R.string.key_objectiveusetemptarget, true)
+        sp.putBoolean(app.aaps.core.utils.R.string.key_objectiveuseactions, true)
+        sp.putBoolean(app.aaps.core.utils.R.string.key_objectiveuseloop, true)
+        sp.putBoolean(app.aaps.core.utils.R.string.key_objectiveusescale, true)
     }
 
     fun reset() {
