@@ -51,7 +51,7 @@ jobs:
 
       - name: Upload Build Artifacts
         if: startsWith(github.ref, 'refs/tags/so-')
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-artifacts
           path: app/build/outputs/apk/debug/*.apk
