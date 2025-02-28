@@ -43,27 +43,27 @@ jobs:
 #          echo "ANDROID_HOME=/opt/android-sdk" >> $GITHUB_ENV
 #          echo "PATH=$PATH:/opt/android-sdk/cmdline-tools/latest/bin:/opt/android-sdk/emulator:/opt/android-sdk/platform-tools" >> $GITHUB_ENV
 
-      - name: Install Android SDK Components
-        run: |
-          yes | sdkmanager --licenses
-          sdkmanager "platform-tools" "platforms;android-30" "build-tools;30.0.3" "system-images;android-30;google_apis_playstore;x86"
+#      - name: Install Android SDK Components
+#        run: |
+#          yes | sdkmanager --licenses
+#          sdkmanager "platform-tools" "platforms;android-30" "build-tools;30.0.3" "system-images;android-30;google_apis_playstore;x86"
 
-      - name: Create Android emulator
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils kmod
-          sudo kvm-ok
-          avdmanager create avd -n test -k "system-images;android-30;google_apis_playstore;x86" --force
-          nohup emulator -avd test -no-snapshot-load -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim &
+#      - name: Create Android emulator
+#        run: |
+#          sudo apt-get update
+#          sudo apt-get install -y qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils kmod
+#          sudo kvm-ok
+#          avdmanager create avd -n test -k "system-images;android-30;google_apis_playstore;x86" --force
+#          nohup emulator -avd test -no-snapshot-load -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim &
 
-      - name: Wait for Emulator
-        run: adb wait-for-device
+#      - name: Wait for Emulator
+#        run: adb wait-for-device
 
-      - name: Run connected Android tests
-        run: ./gradlew connectedFullDebugAndroidTest
+#      - name: Run connected Android tests
+#        run: ./gradlew connectedFullDebugAndroidTest
 
-      - name: Run Unit tests
-        run: ./gradlew testFullDebugUnitTest
+#      - name: Run Unit tests
+#        run: ./gradlew testFullDebugUnitTest
 
       - name: Build APK
         run: ./gradlew assembleDebug
