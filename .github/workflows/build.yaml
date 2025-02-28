@@ -21,6 +21,9 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
       - name: Cache Gradle packages
         uses: actions/cache@v4
         with:
@@ -29,16 +32,16 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
 
-      - name: Install Android SDK and tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y wget unzip
-          wget https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip -O cmdline-tools.zip
-          sudo mkdir -p /opt/android-sdk/cmdline-tools
-          sudo unzip cmdline-tools.zip -d /opt/android-sdk/cmdline-tools
-          sudo mv /opt/android-sdk/cmdline-tools/cmdline-tools /opt/android-sdk/cmdline-tools/latest
-          echo "ANDROID_HOME=/opt/android-sdk" >> $GITHUB_ENV
-          echo "PATH=$PATH:/opt/android-sdk/cmdline-tools/latest/bin:/opt/android-sdk/emulator:/opt/android-sdk/platform-tools" >> $GITHUB_ENV
+#      - name: Install Android SDK and tools
+#        run: |
+#          sudo apt-get update
+#          sudo apt-get install -y wget unzip
+#          wget https://dl.google.com/android/repository/commandlinetools-linux-9477386_latest.zip -O cmdline-tools.zip
+#          sudo mkdir -p /opt/android-sdk/cmdline-tools
+#          sudo unzip cmdline-tools.zip -d /opt/android-sdk/cmdline-tools
+#          sudo mv /opt/android-sdk/cmdline-tools/cmdline-tools /opt/android-sdk/cmdline-tools/latest
+#          echo "ANDROID_HOME=/opt/android-sdk" >> $GITHUB_ENV
+#          echo "PATH=$PATH:/opt/android-sdk/cmdline-tools/latest/bin:/opt/android-sdk/emulator:/opt/android-sdk/platform-tools" >> $GITHUB_ENV
 
       - name: Install Android SDK Components
         run: |
